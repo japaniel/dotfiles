@@ -1,0 +1,2 @@
+export EIDTOR="mate -w"
+export PATH=$PATH:~/bin 
