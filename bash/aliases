@@ -3,7 +3,7 @@ alias ll="ls -l"
 alias ..="cd .."
 
 # Frequent Files
-alias hist="history | awk \'{a[$2]++}END{for(i in a){print a[i] " " i}}\' | sort -rn | head"
+#alias hist="history | awk \'{a[$2]++}END{for(i in a){print a[i] " " i}}\' | sort -rn | head"
 alias reload="source ~/bin/dotfiles/bash/aliases"
 alias als="mate -w ~/bin/dotfiles/bash/aliases && reload"
 
@@ -16,8 +16,9 @@ alias gc='git commit -v'
 alias gd='git diff | mate'
 alias gp='git push'
 alias gpl='git pull'
+alias gitk='gitk --all'
 
 #Load compleations for Ruby, Git, and more in zsh
-autoload compinit
-compinit
+#autoload compinit
+#compinit
 
