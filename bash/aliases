@@ -16,6 +16,7 @@ alias gc='git commit -v'
 alias gd='git diff | mate'
 alias gp='git push'
 alias gpl='git pull'
+alias gitk='gitk --all'
 
 #Load compleations for Ruby, Git, and more in zsh
 #autoload compinit

@@ -1,3 +1,7 @@
 Host japaniel
   HostName danielredington.com
   User dredingt
+
+Host daniel
+  HostName die.dyndns.tv
+  User daniel
