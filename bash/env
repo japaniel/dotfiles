@@ -1,2 +1,2 @@
-export EDITOR="vim -N"
+export EDITOR=$mate
 export PATH=$PATH:~/bin 

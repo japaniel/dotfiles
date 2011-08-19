@@ -8,7 +8,7 @@ alias reload="source ~/bin/dotfiles/bash/aliases"
 alias als="vim ~/bin/dotfiles/bash/aliases && reload"
 
 #VIM
-alias vim='vim -N'
+alias v='vim -N'
 
 # Git
 alias gst='git status'
