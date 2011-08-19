@@ -1,0 +1,11 @@
+Host japaniel
+	HostName japaniel.com
+	User dredingt
+
+Host archie
+	HostName die.dyndns.tv
+	User daniel
+
+Host server
+	HostName 192.168.1.100
+	User daniel
