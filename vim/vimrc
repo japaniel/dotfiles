@@ -6,6 +6,14 @@ set nocompatible                  " Must come first because it changes other opt
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
+set viminfo^=!			  " Add recently accessed projects menu (project plugin)
+
+" Minibuffer Explorer Settings
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
 runtime macros/matchit.vim        " Load the matchit plugin.
 
 set showcmd                       " Display incomplete commands.
@@ -48,7 +56,7 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Or use vividchalk
-" colorscheme topfunky-light
+colorscheme topfunky-light
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -61,6 +69,10 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
+" alt+n or alt+p to navigate between entries in QuickFix
+map <silent> <m-p> :cp <cr>
+map <silent> <m-n> :cn <cr>
+
 " Uncomment to use Jamis Buck's file opening plugin
 "map <Leader>t :FuzzyFinderTextMate<Enter>
 
@@ -70,6 +82,9 @@ map <leader>tm :tabmove
 
 "vnoremap ; :
 "vnoremap : ;
+
+" Change which file opens after executing :Rails command
+let g:rails_default_file='config/database.yml'
 
 " Automatic fold settings for specific files. Uncomment to use.
 " autocmd FileType ruby setlocal foldmethod=syntax
