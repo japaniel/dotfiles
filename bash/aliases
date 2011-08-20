@@ -7,13 +7,16 @@ alias ..="cd .."
 alias reload="source ~/bin/dotfiles/bash/aliases"
 alias als="vim ~/bin/dotfiles/bash/aliases && reload"
 
+#VIM
+alias v='vim -N'
+
 # Git
 alias gst='git status'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gca='git commit -v -a'
 alias gc='git commit -v'
-alias gd='git diff | mate'
+alias gd='git diff | vim'
 alias gp='git push'
 alias gpl='git pull'
 alias gitk='gitk --all'
