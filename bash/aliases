@@ -21,6 +21,10 @@ alias gp='git push'
 alias gpl='git pull'
 alias gitk='gitk --all'
 
+# ssh short cuts
+alias server='ssh server'
+alias daniel='ssh daniel'
+
 #Load compleations for Ruby, Git, and more in zsh
 #autoload compinit
 #compinit
