@@ -1,2 +1,5 @@
 export EDITOR=$'vim -N'
+export CVSEDITOR=$'mate -w'
+export SVN_EDITOR=$'mate -w'
 export PATH=$PATH:~/bin 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
