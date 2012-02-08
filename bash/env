@@ -1,9 +1,9 @@
 export EDITOR=$'vim -N'
-<<<<<<< HEAD
+#<<<<<<< HEAD
 export PATH=$PATH:~/bin:/home2/dredingt/ruby/gems:/usr/lib64/qt-3.3/bin 
 =======
 export CVSEDITOR=$'mate -w'
 export SVN_EDITOR=$'mate -w'
 export PATH=$PATH:~/bin 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
->>>>>>> 6b6883ac7653d413ae8aa21c5214e1b4006fdc06
+#>>>>>>> 6b6883ac7653d413ae8aa21c5214e1b4006fdc06
