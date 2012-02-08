@@ -1,7 +1,7 @@
 export EDITOR=$'vim -N'
 #<<<<<<< HEAD
 export PATH=$PATH:~/bin:/home2/dredingt/ruby/gems:/usr/lib64/qt-3.3/bin 
-=======
+#=======
 export CVSEDITOR=$'mate -w'
 export SVN_EDITOR=$'mate -w'
 export PATH=$PATH:~/bin 
