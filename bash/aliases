@@ -1,7 +1,7 @@
 # navigation
-LS_OPTIONS='--color=tty -F -a -b -T 0';
-export LS_OPTIONS;
-alias ls='/bin/ls $LS_OPTIONS';
+#LS_OPTIONS='--color=tty -F -a -b -T 0';
+#export LS_OPTIONS;
+#alias ls='/bin/ls $LS_OPTIONS';
 
 
 alias ll="ls -l"
@@ -13,7 +13,7 @@ alias reload="source ~/bin/dotfiles/bash/aliases"
 alias als="vim ~/bin/dotfiles/bash/aliases && reload"
 
 #VIM
-alias v='vim -N'
+#alias v='vim -N'
 
 # Git
 alias gst='git status'
