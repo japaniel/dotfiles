@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/daniel/.vim/autoload'
-let g:netrw_dirhist_2='/home/daniel/.vim'
-let g:netrw_dirhist_3='/home/daniel/code/rails/gooderreads'
-let g:netrw_dirhist_4='/home/daniel/bin/dotfiles/vim/plugins/nerdtree/plugin'
-let g:netrw_dirhist_5='/home/daniel/bin/dotfiles/vim/bundle/vim-rails/autoload'
-let g:netrw_dirhist_6='/home/daniel/bin/dotfiles/vim'
-let g:netrw_dirhist_7='/home/daniel/bin/dotfiles/vim/plugin'
