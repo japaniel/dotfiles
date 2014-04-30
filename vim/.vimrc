@@ -3,13 +3,14 @@ set nocompatible	" be iMproved
 set backspace=2 	" Make backspace work like most other apps
 
 set expandtab           " Set tabs to use spaces
-set softtabstop=2       " these 3 should be all the same for proper visual pleasure
-set shiftwidth=2
-set tabstop=2
+set softtabstop=4       " these 3 should be all the same for proper visual pleasure
+set shiftwidth=4
+set tabstop=4
 
 set number
 set relativenumber
 
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
 """Custom Mapping"""
 let mapleader=","
