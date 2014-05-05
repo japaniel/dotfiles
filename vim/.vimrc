@@ -10,6 +10,8 @@ set tabstop=4
 set number
 set relativenumber
 
+syntax on		" Default syntax highlighting
+
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
 """Custom Mapping"""

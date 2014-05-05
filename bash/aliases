@@ -1,7 +1,6 @@
 # navigation
 #LS_OPTIONS='--color=tty -F -a -b -T 0';
 #export LS_OPTIONS;
-#alias ls='/bin/ls $LS_OPTIONS';
 
 
 alias ll="ls -l"
