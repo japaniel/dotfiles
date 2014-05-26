@@ -28,12 +28,12 @@ let mapleader=","
 filetype on
 filetype off 		" required for Vundle
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarick/vundle'
+Bundle 'gmarick/Vundle.vim'
 """End Start of Vundle"""
 
 """Bundles start here
