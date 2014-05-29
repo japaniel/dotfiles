@@ -10,7 +10,9 @@ set tabstop=4
 set number
 set relativenumber
 
-syntax on		" Default syntax highlighting
+syntax enable " Default syntax highlighting
+set background=dark
+colorscheme solarized
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
@@ -39,7 +41,7 @@ Bundle 'gmarick/Vundle.vim'
 """Bundles start here
 """Defaults to github
 
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive'
@@ -50,5 +52,7 @@ Bundle 'vim-scripts/perl-support.vim'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+
+Bundle "altercation/vim-colors-solarized"
 
 filetype plugin indent on     " required by Vundle
