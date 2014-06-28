@@ -1,4 +1,4 @@
-set nocompatible	" be iMproved
+st nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
 
@@ -9,6 +9,11 @@ set tabstop=4
 
 set number
 set relativenumber
+
+set incsearch		" Highlight as you type
+set hlsearch		" Keep highlight througout file
+set ignorecase		" Ignore the case of search
+set smartsearch		" Don't ignore case if pattern includes any capitalized char
 
 syntax on		" Default syntax highlighting
 
