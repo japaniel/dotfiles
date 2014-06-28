@@ -1,4 +1,4 @@
-st nocompatible	" be iMproved
+set nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
 
@@ -16,6 +16,9 @@ set ignorecase		" Ignore the case of search
 set smartsearch		" Don't ignore case if pattern includes any capitalized char
 
 syntax on		" Default syntax highlighting
+syntax enable " Default syntax highlighting
+set background=dark
+colorscheme solarized
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
@@ -33,18 +36,18 @@ let mapleader=","
 filetype on
 filetype off 		" required for Vundle
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarick/vundle'
+Bundle 'gmarick/Vundle.vim'
 """End Start of Vundle"""
 
 """Bundles start here
 """Defaults to github
 
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-fugitive'
@@ -55,5 +58,7 @@ Bundle 'vim-scripts/perl-support.vim'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+
+Bundle "altercation/vim-colors-solarized"
 
 filetype plugin indent on     " required by Vundle
