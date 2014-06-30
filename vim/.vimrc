@@ -1,11 +1,3 @@
-
-
-"""Plugin Config"""
-" repeat
-"nnoremap <silent> <Plug>TransposeCharacters xp
-
-
-
 """Start Vundle Config"""
 filetype on
 filetype off 		" required for Vundle
