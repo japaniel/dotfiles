@@ -1,29 +1,3 @@
-set nocompatible	" be iMproved
-
-set backspace=2 	" Make backspace work like most other apps
-
-set expandtab           " Set tabs to use spaces
-set softtabstop=4       " these 3 should be all the same for proper visual pleasure
-set shiftwidth=4
-set tabstop=4
-
-set number
-set relativenumber
-
-set incsearch		" Highlight as you type
-set hlsearch		" Keep highlight througout file
-set ignorecase		" Ignore the case of search
-set smartsearch		" Don't ignore case if pattern includes any capitalized char
-
-syntax on		" Default syntax highlighting
-syntax enable " Default syntax highlighting
-set background=dark
-colorscheme solarized
-
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
-
-"""Custom Mapping"""
-let mapleader=","
 
 
 """Plugin Config"""
@@ -62,3 +36,32 @@ Bundle "garbas/vim-snipmate"
 Bundle "altercation/vim-colors-solarized"
 
 filetype plugin indent on     " required by Vundle
+
+
+"""Stop Vundle Config
+set nocompatible	" be iMproved
+
+set backspace=2 	" Make backspace work like most other apps
+
+set expandtab           " Set tabs to use spaces
+set softtabstop=4       " these 3 should be all the same for proper visual pleasure
+set shiftwidth=4
+set tabstop=4
+
+set number
+set relativenumber
+
+set incsearch		" Highlight as you type
+set hlsearch		" Keep highlight througout file
+set ignorecase		" Ignore the case of search
+set smartcase		" Don't ignore case if pattern includes any capitalized char
+
+syntax enable 		" Default syntax highlighting
+set background=dark
+colorscheme solarized
+highlight SignColumn ctermbg=black
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+
+"""Custom Mapping"""
+let mapleader=","
