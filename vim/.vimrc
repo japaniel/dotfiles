@@ -1,4 +1,6 @@
 """Start Vundle Config"""
+set nocompatible
+
 filetype on
 filetype off 		" required for Vundle
 
@@ -20,6 +22,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/perl-support.vim'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -30,7 +33,7 @@ Bundle "altercation/vim-colors-solarized"
 filetype plugin indent on     " required by Vundle
 
 
-"""Stop Vundle Config
+"""End Vundle Config
 set nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
@@ -51,9 +54,10 @@ set smartcase		" Don't ignore case if pattern includes any capitalized char
 syntax enable 		" Default syntax highlighting
 set background=dark
 colorscheme solarized
-highlight SignColumn ctermbg=black
+set cursorline
+set cursorcolumn
 
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+set list listchars=eol:$,tab:»-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
 """Custom Mapping"""
 let mapleader=","
