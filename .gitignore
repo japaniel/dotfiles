@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 *.swp
 =======
+.DS_Store
 *~
 *.swp
 tags
