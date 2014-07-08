@@ -24,6 +24,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/perl-support.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'bling/vim-airline'
+Bundle 'thoughtbot/vim-rspec'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -60,3 +61,9 @@ set list listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunctio
 
 """Custom Mapping"""
 let mapleader=","
+
+"""RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
