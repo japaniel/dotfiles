@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/var/www/japaniel.com/games/gimpy/lib/game/entities'
-let g:netrw_dirhist_2='/var/www/japaniel.com/games/gimpy'
-let g:netrw_dirhist_3='/var/www/japaniel.com/games/gimpy/lib'
-let g:netrw_dirhist_4='/var/www/japaniel.com/games/gimpy/lib/game'
-let g:netrw_dirhist_5='/var/www/japaniel.com/games/gimpy/lib/game/entities'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/japaniel/Notes'
+let g:netrw_dirhist_2='/home/japaniel/fun/ruby/hamming'
+let g:netrw_dirhist_3='/home/japaniel/dev/exercism/ruby/gigasecond'
+let g:netrw_dirhist_4='/home/japaniel/dev/exercism/ruby/rna-transcription'
+let g:netrw_dirhist_5='/home/japaniel/dev/exercism/ruby/gigasecond'
+let g:netrw_dirhist_6='/home/japaniel/dev/exercism/ruby/rna-transcription'
+let g:netrw_dirhist_7='/home/japaniel/dotfiles/vim'

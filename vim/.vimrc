@@ -23,6 +23,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/perl-support.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'bling/vim-airline'
 
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -54,10 +55,8 @@ set smartcase		" Don't ignore case if pattern includes any capitalized char
 syntax enable 		" Default syntax highlighting
 set background=dark
 colorscheme solarized
-set cursorline
-set cursorcolumn
 
-set list listchars=eol:$,tab:»-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+set list listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
 """Custom Mapping"""
 let mapleader=","
