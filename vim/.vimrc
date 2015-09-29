@@ -1,52 +1,51 @@
 """Start Vundle Config"""
 set nocompatible
-
-filetype on
-filetype off 		" required for Vundle
+filetype off        " required for Vundle
 
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarick/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 """End Start of Vundle"""
 
-"""Bundles start here
+"""Plugins start here
 """Defaults to github
 
-" Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/perl-support.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'bling/vim-airline'
-Bundle 'thoughtbot/vim-rspec'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-rails.git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'vim-scripts/perl-support.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'bling/vim-airline'
+Plugin 'thoughtbot/vim-rspec'
 
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'fatih/vim-go'
+Plugin 'TheMue/vim-gode'
+Plugin 'altercation/vim-colors-solarized'
 
-Bundle "altercation/vim-colors-solarized"
-
+call vundle#end()
 filetype plugin indent on     " required by Vundle
-
-
 """End Vundle Config
+
 set nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
 
-set expandtab           " Set tabs to use spaces
-set softtabstop=4       " these 3 should be all the same for proper visual pleasure
-set shiftwidth=4
-set tabstop=4
+"set expandtab           " Set tabs to use spaces
+set softtabstop=2       " these 3 should be all the same for proper visual pleasure
+set shiftwidth=2
+set tabstop=2
 
 set number
-set relativenumber
+"set relativenumber
 
 set incsearch		" Highlight as you type
 set hlsearch		" Keep highlight througout file
@@ -57,7 +56,7 @@ syntax enable 		" Default syntax highlighting
 set background=dark
 colorscheme solarized
 
-set list listchars=eol:$,tab:>-,trail:~,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+set list listchars=tab:\.\ ,trail:·,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
 
 """Custom Mapping"""
 let mapleader=","
@@ -67,3 +66,9 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+
+
+"""Go
+" format with goimports instead of gofmt
+let g:go_fmt_command = "goimports"
