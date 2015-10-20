@@ -38,6 +38,8 @@ filetype plugin indent on     " required by Vundle
 set nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
+" open split windows to the right
+set splitright
 
 "set expandtab           " Set tabs to use spaces
 set softtabstop=2       " these 3 should be all the same for proper visual pleasure

@@ -1,10 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/dredington/src/go/src/eventmon'
-let g:netrw_dirhist_2='/Users/dredington/exercism/go/leap'
-let g:netrw_dirhist_3='/Users/dredington/dotfiles/vim/.vim/bundle'
-let g:netrw_dirhist_4='/Users/dredington/.vim'
-let g:netrw_dirhist_5='/Users/dredington/exercism/go/leap'
-let g:netrw_dirhist_6='/Users/dredington/dotfiles/vim/.vim/bundle/Vundle.vim'
-let g:netrw_dirhist_7='/Users/dredington/exercism/go/leap'
-let g:netrw_dirhist_8='/Users/dredington/src/go'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/dredington/src/python/CloudFerry/devlab'
+let g:netrw_dirhist_2='/Users/dredington/.vagrant.d'
+let g:netrw_dirhist_3='/Users/dredington/Library/Application Support/Google/Chrome'
+let g:netrw_dirhist_4='/Users/dredington/src/python/CloudFerry'
+let g:netrw_dirhist_5='/Users/dredington/dotfiles'
