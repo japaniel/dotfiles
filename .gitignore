@@ -3,3 +3,5 @@
 *.swp
 tags
 .netwhist
+vim/\.vim/bundle/**
+.vimrc

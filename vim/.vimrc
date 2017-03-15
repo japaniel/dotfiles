@@ -13,7 +13,6 @@ Plugin 'VundleVim/Vundle.vim'
 """Plugins start here
 """Defaults to github
 
-Plugin 'scrooloose/nerdtree'
 Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-fugitive'
@@ -46,7 +45,7 @@ set softtabstop=2       " these 3 should be all the same for proper visual pleas
 set shiftwidth=2
 set tabstop=2
 
-set number
+"set number
 "set relativenumber
 
 set incsearch		" Highlight as you type
