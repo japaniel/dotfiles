@@ -36,7 +36,7 @@ filetype plugin indent on     " required by Vundle
 set nocompatible	" be iMproved
 
 set backspace=2 	" Make backspace work like most other apps
-" open split windows to the right
+"""open split windows to the right
 set splitright
 
 "set expandtab           " Set tabs to use spaces
@@ -56,7 +56,16 @@ syntax enable 		" Default syntax highlighting
 set background=dark
 colorscheme solarized
 
-set list listchars=tab:\.\ ,trail:·,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+au Filetype python,markdown set colorcolumn=80
+hi ColorColumn ctermbg=darkgrey
+
+" set list listchars=tab:\.\ ,trail:·,extends:>,precedes:< " use in conjunction with :set list to show all whitespace
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+
+"""Directory traversing (netrw)
+set autochdir
+
 
 """Custom Mapping"""
 let mapleader=","
