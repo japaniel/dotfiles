@@ -33,3 +33,8 @@ alias daniel='ssh daniel'
 #autoload compinit
 #compinit
 
+#alias virtman='virt-manager --debug -c qemu+ssh://root@lab2.lcm.mirantis.lab/system?socket=/var/run/libvirt/libvirt-sock'
+virtman() {
+	#sudo virt-manager --debug -c qemu+ssh://$1/system?socket=/var/run/libvirt/libvirt-sock &
+	sudo virt-manager --debug &
+}
