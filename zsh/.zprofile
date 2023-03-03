@@ -3,7 +3,7 @@ autoload -U bashcompinit
 bashcompinit
 
 # Created by `pipx` on 2022-12-21 11:10:03
-export PATH="$PATH:/home/dredington/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 eval "$(register-python-argcomplete pipx)"
 
 
