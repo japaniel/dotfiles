@@ -106,6 +106,10 @@ alias terraform="noglob terraform"
 #yamllint like we do in CI
 alias yamllint="yamllint -s . -fparsable"
 
+# bash complete
+autoload -U bashcompinit
+bashcompinit
+
 # brew config
 export PATH=$PATH:/opt/homebrew/bin
 # Set PATH, MANPATH, etc., for Homebrew.
