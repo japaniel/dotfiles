@@ -116,17 +116,26 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# Created by `pipx` on 2022-12-21 11:10:03
+export PATH="$PATH:$HOME/.local/bin"
+
 # pipx autocomplete
 eval "$(register-python-argcomplete pipx)"
 
 # Created by `pipx` on 2022-10-03 23:26:28
-export PATH="$PATH:/Users/danielredington/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Ansible and other thread unsafe items
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
-
+# Kubernetes krew install
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Ruby config
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '$HOME/downloads/google-cloud-sdk/path.zsh.inc' ];    
+  then . '$HOME/downloads/google-cloud-sdk/path.zsh.inc';
+fi
 
