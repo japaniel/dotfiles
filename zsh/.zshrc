@@ -106,14 +106,18 @@ alias terraform="noglob terraform"
 #yamllint like we do in CI
 alias yamllint="yamllint -s . -fparsable"
 
-# bash complete
-autoload -U bashcompinit
-bashcompinit
+if [[ $(basename $SHELL) == "bash" ]]; then
+	# bash complete
+	autoload -U bashcompinit
+	bashcompinit
+fi
 
-# brew config
-export PATH=$PATH:/opt/homebrew/bin
-# Set PATH, MANPATH, etc., for Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ $(uname -s) == "Darwin" ]]; then
+	# brew config
+	export PATH=$PATH:/opt/homebrew/bin
+	# Set PATH, MANPATH, etc., for Homebrew.
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Python config
 export PYENV_ROOT="$HOME/.pyenv"
@@ -142,12 +146,15 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '$HOME/downloads/google-cloud-sdk/path.zsh.inc' ];
-  then . '$HOME/downloads/google-cloud-sdk/path.zsh.inc';
+if [ -f "$HOME/downloads/google-cloud-sdk/path.zsh.inc" ];
+  then . "$HOME/downloads/google-cloud-sdk/path.zsh.inc";
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '$HOME/downloads/google-cloud-sdk/completion.zsh.inc' ];
-  then . '$HOME/downloads/google-cloud-sdk/completion.zsh.inc';
+if [ -f "$HOME/downloads/google-cloud-sdk/completion.zsh.inc" ];
+  then . "$HOME/downloads/google-cloud-sdk/completion.zsh.inc";
 fi
+
+# tfenv
+export PATH="$HOME/.tfenv/bin:$PATH"
 
