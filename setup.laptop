@@ -1,0 +1,23 @@
+#! /bin/bash
+
+#packages to install
+# packages = (\
+# "git"\
+# "vim"\
+# "zsh"\
+# "pyenv"\
+# )
+
+
+# for package in ${packages[@]}; do
+#     $(apt install $package) || exit 
+# done
+    
+# # Change default shell
+# chsh -s /usr/bin/zsh dredington
+
+# # Install Oh-my-zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install docker desktop
+# https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository

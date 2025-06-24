@@ -158,3 +158,7 @@ fi
 # tfenv
 export PATH="$HOME/.tfenv/bin:$PATH"
 
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+
+

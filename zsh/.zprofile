@@ -3,20 +3,9 @@ export PATH="$PATH:$HOME/.local/bin"
 
 SSH_ENV="$HOME/.ssh/environment"
 
-function start_agent {
-  echo "Initialising new SSH agent..."
-  (umask 066; /usr/bin/ssh-agent > "${SSH_ENV}")
-  . "${SSH_ENV}" > /dev/null
-  /usr/bin/ssh-add;
-}
-
-# Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
-  . "${SSH_ENV}" > /dev/null
-  ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-    start_agent;
-  }
-else
-  start_agent;
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+  eval "$(ssh-agent -s)"
 fi
+
+# Add key if not already added
+ssh-add -l | grep -q "$(ssh-keygen -lf ~/.ssh/arc.id_rsa | awk '{print $2}')" || ssh-add ~/.ssh/arc.id_rsa
