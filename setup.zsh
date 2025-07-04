@@ -39,10 +39,3 @@ if [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
   echo "Installing zsh-syntax-highlighting plugin..."
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 fi
-
-# TODO: install pyenv
-# if [ ! $(which pyenv) && $(uname -s) == "Linux" ]; then
-#   curl https://pyenv.run | bash
-# fi
-
-# TODO: install tfenv

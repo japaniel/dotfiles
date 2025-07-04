@@ -1,6 +1,7 @@
-# Created by `pipx` on 2022-12-21 11:10:03
-export PATH="$PATH:$HOME/.local/bin"
+# .zprofile - Login shell configuration only
+# This file is sourced only for login shells (when you first log in)
 
+# SSH Agent Configuration
 SSH_ENV="$HOME/.ssh/environment"
 
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -9,3 +10,5 @@ fi
 
 # Add key if not already added
 ssh-add -l | grep -q "$(ssh-keygen -lf ~/.ssh/arc.id_rsa | awk '{print $2}')" || ssh-add ~/.ssh/arc.id_rsa
+
+# Note: All PATH and development environment settings are now in .zshrc

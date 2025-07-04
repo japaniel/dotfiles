@@ -98,48 +98,7 @@ zstyle ':completion:*' menu select                       # Use menu selection fo
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# don't require backslashes for querying terraform state (i.e. don't glob square brack
-alias terraform="noglob terraform"
-
-#yamllint like we do in CI
-alias yamllint="yamllint -s . -fparsable"
-
-if [[ $(basename $SHELL) == "bash" ]]; then
-	# bash complete
-	autoload -U bashcompinit
-	bashcompinit
-fi
-
-if [[ $(uname -s) == "Darwin" ]]; then
-	# brew config
-	export PATH=$PATH:/opt/homebrew/bin
-	# Set PATH, MANPATH, etc., for Homebrew.
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# ===== Development Environment Configuration =====
 
 # Python config
 export PYENV_ROOT="$HOME/.pyenv"
@@ -152,32 +111,87 @@ export PATH="$PATH:$HOME/.local/bin"
 # pipx autocomplete
 eval "$(register-python-argcomplete pipx)"
 
-# Ansible and other thread unsafe items
-export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+# Node.js / nvm config
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Ruby config
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Go config
+export GOPATH="$HOME/go"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
+
+# Terraform config
+export PATH="$HOME/.tfenv/bin:$PATH"
+
+# Kubernetes krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Kubernetes auto complete 
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-# Kubernetes krew install
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# Ruby config
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/downloads/google-cloud-sdk/path.zsh.inc" ];
-  then . "$HOME/downloads/google-cloud-sdk/path.zsh.inc";
+# Google Cloud SDK
+if [ -f "$HOME/downloads/google-cloud-sdk/path.zsh.inc" ]; then
+  . "$HOME/downloads/google-cloud-sdk/path.zsh.inc"
+fi
+if [ -f "$HOME/downloads/google-cloud-sdk/completion.zsh.inc" ]; then
+  . "$HOME/downloads/google-cloud-sdk/completion.zsh.inc"
+fi
+# Alternative path for existing installation
+if [ -f '/home/dredington/google-cloud-sdk/path.zsh.inc' ]; then
+  . '/home/dredington/google-cloud-sdk/path.zsh.inc'
+fi
+if [ -f '/home/dredington/google-cloud-sdk/completion.zsh.inc' ]; then
+  . '/home/dredington/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/downloads/google-cloud-sdk/completion.zsh.inc" ];
-  then . "$HOME/downloads/google-cloud-sdk/completion.zsh.inc";
+# Docker config
+export DOCKER_HOST=unix:///var/run/docker.sock
+
+# macOS Homebrew config
+if [[ $(uname -s) == "Darwin" ]]; then
+	# brew config
+	export PATH=$PATH:/opt/homebrew/bin
+	# Set PATH, MANPATH, etc., for Homebrew.
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# tfenv
-export PATH="$HOME/.tfenv/bin:$PATH"
+# ===== End Development Environment Configuration =====
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$GOPATH/bin
+# ===== Additional Configuration =====
 
+# Ansible and other thread unsafe items
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
+# Language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor
+# export EDITOR='vim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ===== Aliases =====
+
+# don't require backslashes for querying terraform state (i.e. don't glob square brackets)
+alias terraform="noglob terraform"
+
+# yamllint like we do in CI
+alias yamllint="yamllint -s . -fparsable"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# ===== Bash Compatibility =====
+
+if [[ $(basename $SHELL) == "bash" ]]; then
+	# bash complete
+	autoload -U bashcompinit
+	bashcompinit
+fi

@@ -206,7 +206,10 @@ test_docker() {
         print_pass "Docker is installed ($docker_version)"
         
         # Test if user can run docker without sudo
+        # Try with system socket if default doesn't work
         if docker ps >/dev/null 2>&1; then
+            print_pass "Docker can run without sudo"
+        elif DOCKER_HOST=unix:///var/run/docker.sock docker ps >/dev/null 2>&1; then
             print_pass "Docker can run without sudo"
         else
             print_fail "Docker requires sudo (user not in docker group?)"
@@ -240,7 +243,7 @@ test_terraform() {
 
 test_google_cloud() {
     print_test "Google Cloud SDK"
-    if [ -d "$HOME/downloads/google-cloud-sdk" ]; then
+    if [ -d "$HOME/Downloads/google-cloud-sdk" ] || [ -d "$HOME/google-cloud-sdk" ]; then
         print_pass "Google Cloud SDK directory exists"
         
         if command -v gcloud >/dev/null 2>&1; then

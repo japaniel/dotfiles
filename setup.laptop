@@ -22,8 +22,24 @@
 # Install docker desktop
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
-# Setup vim configuration
+# Setup dotfiles symlinks
 script_path=$(realpath $(dirname $0))
+
+# Setup zsh configuration
+if [ ! -L $HOME/.zprofile ]; then
+  echo "Creating symlink to zprofile"
+  ln -s $script_path/zsh/.zprofile ~/.zprofile
+fi
+if [ ! -L $HOME/.zshrc ]; then
+  echo "Creating symlink to zshrc"
+  ln -s $script_path/zsh/.zshrc ~/.zshrc
+fi
+
+# Setup vim configuration
+if [ ! -L $HOME/.vimrc ]; then
+  echo "Creating symlink to vimrc"
+  ln -s $script_path/vim/.vimrc ~/.vimrc
+fi
 
 if [ ! -L $HOME/.vim ] && [ -d $script_path/vim/.vim ]; then
   # Remove existing .vim directory if it's not a symlink and create symlink
@@ -40,8 +56,129 @@ if command -v docker >/dev/null 2>&1; then
   if ! groups $USER | grep -q '\bdocker\b'; then
     echo "Adding user to docker group..."
     sudo usermod -aG docker $USER
-    echo "Docker group added. You may need to log out and back in, or run 'newgrp docker'"
+    echo "Docker group added. You may need to log out and back in for docker group to take full effect"
   else
     echo "User already in docker group"
   fi
+  
+  # Ensure Docker uses the system socket (not Docker Desktop)
+  if [ ! -f ~/.docker/config.json ]; then
+    mkdir -p ~/.docker
+    echo '{"hosts": ["unix:///var/run/docker.sock"]}' > ~/.docker/config.json
+  fi
+  
+  # Set DOCKER_HOST environment variable for current session
+  export DOCKER_HOST=unix:///var/run/docker.sock
+  echo 'export DOCKER_HOST=unix:///var/run/docker.sock' >> ~/.zshrc
+else
+  echo "Docker is not installed"
+fi
+
+# Programming Language Environments
+
+# Install pyenv for Python management
+if ! command -v pyenv >/dev/null 2>&1; then
+  echo "Installing pyenv..."
+  curl https://pyenv.run | bash
+  # Add pyenv to PATH
+  export PYENV_ROOT="$HOME/.pyenv"
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
+# Install pipx for Python package management
+if ! command -v pipx >/dev/null 2>&1; then
+  echo "Installing pipx..."
+  sudo apt update
+  sudo apt install -y pipx
+  pipx ensurepath
+fi
+
+# Install Node.js via nvm
+if ! command -v node >/dev/null 2>&1; then
+  echo "Installing Node.js via nvm..."
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm install node
+  nvm use node
+fi
+
+# Install Ruby via Ubuntu packages and rbenv for version management
+if ! command -v ruby >/dev/null 2>&1; then
+  echo "Installing Ruby via apt..."
+  sudo apt update
+  sudo apt install -y ruby ruby-dev build-essential
+fi
+
+# Install rbenv for Ruby version management (expected by tests)
+if ! command -v rbenv >/dev/null 2>&1; then
+  echo "Installing rbenv..."
+  git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc
+  echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
+# Setup GOPATH for Go
+if command -v go >/dev/null 2>&1; then
+  if [ -z "$GOPATH" ]; then
+    echo "Setting up GOPATH..."
+    export GOPATH="$HOME/go"
+    mkdir -p "$GOPATH"
+    echo 'export GOPATH="$HOME/go"' >> ~/.zshrc
+    echo 'export PATH="$GOPATH/bin:$PATH"' >> ~/.zshrc
+    # Also add to current session
+    export PATH="$GOPATH/bin:$PATH"
+  else
+    echo "GOPATH already set: $GOPATH"
+  fi
+fi
+
+# Infrastructure and Development Tools
+
+# Install tfenv for Terraform version management
+if ! command -v tfenv >/dev/null 2>&1; then
+  echo "Installing tfenv..."
+  git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+  export PATH="$HOME/.tfenv/bin:$PATH"
+  echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.zshrc
+fi
+
+# Install kubectl krew plugin manager
+if command -v kubectl >/dev/null 2>&1 && ! kubectl krew >/dev/null 2>&1; then
+  echo "Installing kubectl krew..."
+  (
+    set -x; cd "$(mktemp -d)" &&
+    OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+    ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+    KREW="krew-${OS}_${ARCH}" &&
+    curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+    tar zxvf "${KREW}.tar.gz" &&
+    ./"${KREW}" install krew
+  )
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  echo 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> ~/.zshrc
+fi
+
+# Install Google Cloud SDK
+if ! command -v gcloud >/dev/null 2>&1; then
+  echo "Installing Google Cloud SDK..."
+  # Create Downloads directory if it doesn't exist
+  mkdir -p "$HOME/Downloads"
+  cd "$HOME/Downloads"
+  
+  # Download and install Google Cloud SDK
+  curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-x86_64.tar.gz
+  tar -xf google-cloud-cli-linux-x86_64.tar.gz
+  ./google-cloud-sdk/install.sh --quiet --path-update=true
+  
+  # Add to PATH for current session
+  export PATH="$HOME/Downloads/google-cloud-sdk/bin:$PATH"
+  echo 'export PATH="$HOME/Downloads/google-cloud-sdk/bin:$PATH"' >> ~/.zshrc
+  
+  # Return to dotfiles directory
+  cd - > /dev/null
 fi
