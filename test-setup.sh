@@ -260,6 +260,45 @@ test_vim_config() {
     print_test "Vim configuration"
     test_symlink "$HOME/.vimrc" "dotfiles/vim/.vimrc" ".vimrc symlink"
     test_symlink "$HOME/.vim" "dotfiles/vim/.vim" ".vim directory symlink"
+    
+    print_test "Vim plugin manager (Vundle)"
+    if [ -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+        print_pass "Vundle plugin manager is installed"
+    else
+        print_fail "Vundle plugin manager is not installed"
+        return
+    fi
+    
+    print_test "Vim plugins"
+    # Check for some key plugins from .vimrc
+    local plugins_to_check=(
+        "vim-fugitive"
+        "ctrlp.vim"
+        "vim-airline"
+        "supertab"
+        "vim-colors-solarized"
+        "vim-rails"
+        "vim-go"
+    )
+    
+    local plugins_found=0
+    local total_plugins=${#plugins_to_check[@]}
+    
+    for plugin in "${plugins_to_check[@]}"; do
+        if [ -d "$HOME/.vim/bundle/$plugin" ]; then
+            ((plugins_found++))
+        fi
+    done
+    
+    if [ $plugins_found -eq $total_plugins ]; then
+        print_pass "All essential vim plugins are installed ($plugins_found/$total_plugins)"
+    elif [ $plugins_found -gt 3 ]; then
+        print_pass "Most vim plugins are installed ($plugins_found/$total_plugins)"
+    elif [ $plugins_found -gt 0 ]; then
+        print_pass "Some vim plugins are installed ($plugins_found/$total_plugins)"
+    else
+        print_fail "No vim plugins found in bundle directory"
+    fi
 }
 
 test_zsh_config() {

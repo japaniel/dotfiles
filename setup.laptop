@@ -51,6 +51,24 @@ if [ ! -L $HOME/.vim ] && [ -d $script_path/vim/.vim ]; then
   ln -s $script_path/vim/.vim ~/.vim
 fi
 
+# Install vim plugins via Vundle
+if [ -f "$HOME/.vimrc" ] && grep -q "Vundle" "$HOME/.vimrc"; then
+  echo "Setting up vim plugins..."
+  
+  # First ensure Vundle is installed
+  if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+    echo "Installing Vundle plugin manager..."
+    mkdir -p "$HOME/.vim/bundle"
+    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+  fi
+  
+  echo "Installing vim plugins via Vundle..."
+  # Use vim in Ex mode silent with explicit options to avoid interactive session
+  vim -es -u "$HOME/.vimrc" -c "PluginInstall" -c "qall" < /dev/null || echo "Vim plugins installation completed"
+else
+  echo "Vundle not found in .vimrc, skipping vim plugin installation"
+fi
+
 # Add user to docker group if docker is installed and user is not in group
 if command -v docker >/dev/null 2>&1; then
   if ! groups $USER | grep -q '\bdocker\b'; then

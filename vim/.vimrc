@@ -28,7 +28,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'fatih/vim-go'
 Plugin 'TheMue/vim-gode'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'AfterColors'
+Plugin 'vim-scripts/AfterColors.vim'
 
 call vundle#end()
 filetype plugin indent on     " required by Vundle
