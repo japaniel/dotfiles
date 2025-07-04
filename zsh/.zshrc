@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"  # More informative than robbyrussell, shows git status and path
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,11 +25,11 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
+zstyle ':omz:update' mode reminder    # remind me to update when it's time
 # zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 7      # Check for updates weekly
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -52,7 +52,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"  # Speeds up git repos significantly
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -60,7 +60,7 @@ ZSH_THEME="robbyrussell"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -70,9 +70,31 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  docker
+  kubectl
+  terraform
+  pyenv
+  history-substring-search
+  command-not-found
+)
 
 source $ZSH/oh-my-zsh.sh
+
+# Enhanced zsh options
+setopt AUTO_CD              # cd by typing directory name if it's not a command
+setopt CORRECT_ALL          # autocorrect commands
+setopt SHARE_HISTORY        # share history between sessions
+setopt HIST_VERIFY          # show history expansion before running it
+setopt EXTENDED_HISTORY     # save timestamps in history
+setopt INC_APPEND_HISTORY   # add commands to history immediately
+
+# Better completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # Case insensitive completion
+zstyle ':completion:*' menu select                       # Use menu selection for completion
 
 # User configuration
 
@@ -129,9 +151,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # pipx autocomplete
 eval "$(register-python-argcomplete pipx)"
-
-# Created by `pipx` on 2022-10-03 23:26:28
-export PATH="$PATH:$HOME/.local/bin"
 
 # Ansible and other thread unsafe items
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES

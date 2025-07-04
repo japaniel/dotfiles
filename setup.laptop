@@ -21,3 +21,27 @@
 
 # Install docker desktop
 # https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+# Setup vim configuration
+script_path=$(realpath $(dirname $0))
+
+if [ ! -L $HOME/.vim ] && [ -d $script_path/vim/.vim ]; then
+  # Remove existing .vim directory if it's not a symlink and create symlink
+  if [ -d $HOME/.vim ]; then
+    echo "Backing up existing .vim directory"
+    mv $HOME/.vim $HOME/.vim.backup
+  fi
+  echo "Creating symlink to vim directory"
+  ln -s $script_path/vim/.vim ~/.vim
+fi
+
+# Add user to docker group if docker is installed and user is not in group
+if command -v docker >/dev/null 2>&1; then
+  if ! groups $USER | grep -q '\bdocker\b'; then
+    echo "Adding user to docker group..."
+    sudo usermod -aG docker $USER
+    echo "Docker group added. You may need to log out and back in, or run 'newgrp docker'"
+  else
+    echo "User already in docker group"
+  fi
+fi
