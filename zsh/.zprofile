@@ -12,3 +12,6 @@ fi
 ssh-add -l | grep -q "$(ssh-keygen -lf ~/.ssh/arc.id_rsa | awk '{print $2}')" || ssh-add ~/.ssh/arc.id_rsa
 
 # Note: All PATH and development environment settings are now in .zshrc
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
