@@ -80,6 +80,11 @@ fi
 
 # ===== End Development Environment Configuration =====
 
+# Source shell-agnostic aliases
+if [ -f "$HOME/dotfiles/aliases.sh" ]; then
+    source "$HOME/dotfiles/aliases.sh"
+fi
+
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 alias terraform="noglob terraform"

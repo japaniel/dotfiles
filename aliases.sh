@@ -1,6 +1,10 @@
-# navigation
-#LS_OPTIONS='--color=tty -F -a -b -T 0';
-#export LS_OPTIONS;
+#!/bin/sh
+# Shell-agnostic aliases for all environments
+
+# Network aliases
+alias fix-mtu='sudo ip link set dev gpd0 mtu 1200'
+
+# Add more aliases below as needed
 
 
 alias ll="ls -l"
@@ -9,7 +13,6 @@ alias ..="cd .."
 # Frequent Files
 #alias hist="history | awk \'{a[$2]++}END{for(i in a){print a[i] " " i}}\' | sort -rn | head"
 alias reload="source ~/bin/dotfiles/bash/aliases"
-alias als="vim ~/bin/dotfiles/bash/aliases && reload"
 
 #VIM
 #alias v='vim -N'
@@ -28,12 +31,6 @@ alias gitk='gitk --all'
 # ssh short cuts
 alias server='ssh server'
 alias daniel='ssh daniel'
-
-# Source shell-agnostic aliases
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-if [ -f "$DOTFILES_DIR/aliases.sh" ]; then
-    source "$DOTFILES_DIR/aliases.sh"
-fi
 
 #Load compleations for Ruby, Git, and more in zsh
 #autoload compinit
